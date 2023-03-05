@@ -31,4 +31,9 @@ public class Transition : MonoBehaviour
         animation.SetBool("jump", playAnim);
     }
 
+    public void Dance(bool playAnim)
+    {
+        animation.SetBool("dance", playAnim);
+    }
+
 }

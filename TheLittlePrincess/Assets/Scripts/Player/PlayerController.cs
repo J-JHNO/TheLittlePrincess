@@ -102,4 +102,28 @@ public class PlayerController : MonoBehaviour
         velocity += jumpPower;
         transition.Jump(true);
     }
+
+    public void Crouch(InputAction.CallbackContext context)
+    {
+        if (context.canceled)
+        {
+            transition.Crouch(false);
+            return;
+        }
+        if (!context.started) return;
+
+        transition.Crouch(true);
+    }
+
+    public void Dance(InputAction.CallbackContext context)
+    {
+        if (context.canceled)
+        {
+            transition.Dance(false);
+            return;
+        }
+        if (!context.started) return;
+
+        transition.Dance(true);
+    }
 }
