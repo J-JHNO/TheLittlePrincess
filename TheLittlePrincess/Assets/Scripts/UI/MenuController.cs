@@ -10,6 +10,7 @@ public class MenuController : MonoBehaviour
     public PlanetLoader _planetLoader;
 
     private float _waitBetweenActions = 0.7f;
+    private bool _loadingPlanet = false;
 
     public void PressButton(int indexButton, string context)
     {
@@ -112,8 +113,13 @@ public class MenuController : MonoBehaviour
 
     public IEnumerator StartPlanet(int planetIndex)
     {
-        Debug.Log("Start planet " + planetIndex);
-        yield return new WaitForSeconds(_waitBetweenActions);
-        _planetLoader.LoadPlanet(planetIndex + 1); // + 1 because there is the Menu scene at the position 0
+        if (!_loadingPlanet)
+        {
+            _loadingPlanet = true;
+            Debug.Log("Start planet " + planetIndex);
+            yield return new WaitForSeconds(_waitBetweenActions);
+            _planetLoader.LoadPlanet(planetIndex + 1); // + 1 because there is the Menu scene at the position 0
+            _loadingPlanet = false;
+        }
     }
 }
