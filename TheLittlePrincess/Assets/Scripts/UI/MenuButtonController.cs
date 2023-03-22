@@ -13,20 +13,20 @@ public class MenuButtonController : MonoBehaviour {
 	[SerializeField] int maxIndex;
 
 	public AudioSource audioSource;
-	public MenuController menuController;
+	public IMenuController menuController;
 	
 	// Update is called once per frame
 	void Update () {
 		if (!_isActive) return;
-		if (Input.GetAxis ("Vertical") != 0) {
+		if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow)) {
 			if (!keyDown) {
-				if (Input.GetAxis ("Vertical") < 0) {
+				if (Input.GetKeyDown(KeyCode.DownArrow)) {
 					if (index < maxIndex) {
 						index++;
 					} else{
 						index = 0;
 					}
-				} else if (Input.GetAxis ("Vertical") > 0) {
+				} else if (Input.GetKeyDown(KeyCode.UpArrow)) {
 					if (index > 0) {
 						index --; 
 					} else {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MenuController : MonoBehaviour
+public class MenuController : IMenuController
 {
     public MenuButtonController _mainMenuController;
     public MenuButtonController _planetMenuController;
@@ -12,6 +12,7 @@ public class MenuController : MonoBehaviour
     private float _waitBetweenActions = 0.7f;
     private bool _loadingPlanet = false;
 
+    override
     public void PressButton(int indexButton, string context)
     {
         if (context.Equals(_mainMenuController.context))
