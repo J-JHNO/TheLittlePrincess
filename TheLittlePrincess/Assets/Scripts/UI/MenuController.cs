@@ -47,17 +47,13 @@ public class MenuController : IMenuController
 
     public void DoActionPlanetSelectorMenu(int indexButton)
     {
-        switch (indexButton)
+        int planetUnlocked = _planetLoader.NumberOfPlanetsUnlocked();
+
+        if (indexButton == planetUnlocked) StartCoroutine(UnlockAllPlanets());
+        else if (indexButton == (planetUnlocked + 1)) StartCoroutine(ShowMainMenu()); // Back Button
+        else
         {
-            case 0:
-            case 1:
-            case 2:
-            case 3:
-                StartCoroutine(StartPlanet(indexButton));
-                break;
-            case 4:
-                StartCoroutine(ShowMainMenu()); // Back Button
-                break;
+            StartCoroutine(StartPlanet(indexButton));
         }
     }
 
@@ -104,6 +100,9 @@ public class MenuController : IMenuController
     public IEnumerator Quit()
     {
         Debug.Log("Quit");
+
+        DataPersistenceManager.instance.SaveGame();
+
         yield return new WaitForSeconds(_waitBetweenActions);
 
         #if UNITY_EDITOR
@@ -117,10 +116,16 @@ public class MenuController : IMenuController
         if (!_loadingPlanet)
         {
             _loadingPlanet = true;
-            Debug.Log("Start planet " + planetIndex);
             yield return new WaitForSeconds(_waitBetweenActions);
-            _planetLoader.LoadPlanet(planetIndex + 1); // + 1 because there is the Menu scene at the position 0
+            _planetLoader.LoadPlanet(planetIndex);
             _loadingPlanet = false;
         }
+    }
+
+    public IEnumerator UnlockAllPlanets()
+    {
+        yield return new WaitForSeconds(_waitBetweenActions);
+        _planetLoader.UnlockAllPlanets();
+        yield return new WaitForSeconds(_waitBetweenActions);
     }
 }

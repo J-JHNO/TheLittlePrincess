@@ -27,4 +27,9 @@ public class MenuButton : MonoBehaviour
 			animator.SetBool ("selected", false);
 		}
     }
+
+	public void SetIndex(int index)
+    {
+		this.thisIndex = index;
+    }
 }

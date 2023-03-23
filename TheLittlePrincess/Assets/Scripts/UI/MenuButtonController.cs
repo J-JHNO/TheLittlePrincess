@@ -63,4 +63,9 @@ public class MenuButtonController : MonoBehaviour {
 		this.gameObject.SetActive(show);
 	}
 
+	public void SetMaxIndex(int maxIndex)
+    {
+		this.maxIndex = maxIndex;
+    }
+
 }
