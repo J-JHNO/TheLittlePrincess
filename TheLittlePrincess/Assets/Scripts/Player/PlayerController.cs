@@ -126,4 +126,14 @@ public class PlayerController : MonoBehaviour
 
         transition.Dance(true);
     }
+
+    public void ChangePosition(Vector3 position)
+    {
+        this.transform.position = position;
+    }
+
+    public Vector3 GetPosition()
+    {
+        return this.transform.position;
+    }
 }

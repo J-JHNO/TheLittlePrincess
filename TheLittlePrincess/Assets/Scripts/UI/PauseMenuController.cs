@@ -8,6 +8,9 @@ public class PauseMenuController : IMenuController
     public MenuButtonController _pauseMenuController;
     public MenuButtonController _optionsMenuController;
 
+    [Header("Save Data Holder")]
+    public PauseMenuDataHolder dataHolder;
+
     private bool paused = false;
     private float _waitBetweenActions = 0.7f;
 
@@ -55,6 +58,9 @@ public class PauseMenuController : IMenuController
                 ShowOptions();
                 break;
             case 2:
+                SaveAndExit();
+                break;
+            case 3:
                 StartCoroutine(BackToMainMenu());
                 break;
         }
@@ -90,6 +96,18 @@ public class PauseMenuController : IMenuController
     {
         _pauseMenuController.DeActivate();
         _optionsMenuController.Activate();
+    }
+
+    private void SaveAndExit()
+    {
+        Save();
+        StartCoroutine(BackToMainMenu());
+    }
+
+    private void Save()
+    {
+        dataHolder.IncreaseNumberOfSave();
+        DataPersistenceManager.instance.SaveGame();
     }
 
     private IEnumerator BackToMainMenu()
