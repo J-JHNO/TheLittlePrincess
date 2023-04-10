@@ -10,6 +10,8 @@ public class PlanetLoader : MonoBehaviour, IDataPersistence
     public MenuButtonController planetMenuController;
     public List<MenuButton> otherPlanetMenuButton;
 
+    public LoadingScreen loadingScreen;
+
     private List<bool> planetLocked;
 
     private void Start()
@@ -94,7 +96,7 @@ public class PlanetLoader : MonoBehaviour, IDataPersistence
         {
             int planetSceneNumber = planetUI.GetSceneNumber();
             Debug.Log("Start planet " + planetSceneNumber);
-            AsyncOperation loadingOperation = SceneManager.LoadSceneAsync(planetSceneNumber);
+            loadingScreen.LoadScene(planetSceneNumber);
         }
         else
         {
