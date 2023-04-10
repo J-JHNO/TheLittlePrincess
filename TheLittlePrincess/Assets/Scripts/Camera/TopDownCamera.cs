@@ -6,6 +6,7 @@ namespace IndiePixel.Cameras
 {
     public class TopDownCamera : MonoBehaviour
     {
+
         #region Variables
         public Transform m_Target;
 
@@ -22,7 +23,11 @@ namespace IndiePixel.Cameras
         public float m_SmoothSpeed = 0.5f;
 
         private Vector3 refVelocity;
+
+
         #endregion
+        int n = 0;
+        int count = 100;
 
         #region Main Methods
         // Start is called before the first frame update
@@ -35,13 +40,14 @@ namespace IndiePixel.Cameras
         void Update()
         {
             HandleCamera();
+           
         }
         #endregion
 
         #region Helper Methods
         protected virtual void HandleCamera()
         {
-            if(!m_Target)
+            if (!m_Target)
             {
                 return;
             }
@@ -56,10 +62,25 @@ namespace IndiePixel.Cameras
 
             // Move our position
             Vector3 flatTargetPosition = m_Target.position;
+
+            float newHeight = Mathf.Clamp(m_Target.position.y + 2f, 2f, 5f);
+
+            Debug.Log(Mathf.Round(newHeight - m_Target.position.y));
+
+           
             flatTargetPosition.y = 0f;
+            if (Mathf.Round(newHeight - m_Target.position.y) < 0 && count == 100)
+            {
+
+                flatTargetPosition.y = newHeight;
+                count = 0;
+                n++;
+
+            }
+            count++;
             Vector3 finalPosition = flatTargetPosition + rotatedVector;
             Debug.DrawLine(m_Target.position, finalPosition, Color.blue);
-            
+
             Vector3 finaly = Vector3.SmoothDamp(transform.position, finalPosition, ref refVelocity, m_SmoothSpeed);
             finaly.z = m_Target.position.z - m_Distance;
             transform.position = finaly;
