@@ -21,7 +21,7 @@ public class MenuButtonController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.UpArrow)) {
 			if (!keyDown) {
 				if (Input.GetKeyDown(KeyCode.DownArrow)) {
-					if (index < maxIndex) {
+                    if (index < maxIndex) {
 						index++;
 					} else{
 						index = 0;
