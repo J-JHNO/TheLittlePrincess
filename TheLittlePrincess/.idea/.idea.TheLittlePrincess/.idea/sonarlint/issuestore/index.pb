@@ -1,3 +1,19 @@
 
 ]
 -Assets/RacingCarsAssets/Scripts/AIControls.cs,9\2\9206d03ca88f2b0b6d1c2ac804d4614ce3e546de
+\
+,Assets/RacingCarsAssets/Scripts/UIManager.cs,4\f\4f091cb42bdec4eaff2a8272bc4e562f2395867a
+]
+-Assets/RacingCarsAssets/Scripts/PlayerRank.cs,f\1\f1433145e63843533ce6731a97b5a315f95efc38
+^
+.Assets/RacingCarsAssets/Scripts/CarMovement.cs,d\5\d5165a77e397ee8476af45e464ee91e2c59ed7d9
+]
+-Assets/RacingCarsAssets/Scripts/LapManager.cs,4\0\40c8590207ebc302da9c55f1ee47b4cc1f5646e6
+]
+-Assets/RacingCarsAssets/Scripts/Checkpoint.cs,0\5\05d6f75446d7564825af15560e230fea69800f1f
+Y
+)Assets/Scripts/Player/PlayerController.cs,c\1\c1b2abcd3d72732cf3bf687bc9080c1357596be9
+T
+$Assets/Scripts/Save/Data/GameData.cs,6\0\60c1d848c882076f641a092546903f07c188721f
+^
+.Assets/RacingCarsAssets/Scripts/GameManager.cs,d\9\d9cfb1e4f09c38b2a950b9a4f312b20c12bd6bb1
