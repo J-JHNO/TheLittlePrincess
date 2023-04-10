@@ -7,6 +7,9 @@ public class PauseMenuController : IMenuController
 {
     public MenuButtonController _pauseMenuController;
     public MenuButtonController _optionsMenuController;
+    public MenuButtonController _endMenuController;
+    public MenuButtonController _baseUIController;
+    public MenuButtonController _showClueUIController;
 
     [Header("Save Data Holder")]
     public PauseMenuDataHolder dataHolder;
@@ -21,7 +24,7 @@ public class PauseMenuController : IMenuController
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !_endMenuController._isActive && !_showClueUIController._isActive)
         {
             if (paused)
             {
@@ -80,6 +83,8 @@ public class PauseMenuController : IMenuController
     {
         _pauseMenuController.Activate();
         _optionsMenuController.DeActivate();
+        if (_baseUIController != null) _baseUIController.DeActivate();
+        if (_showClueUIController != null) _showClueUIController.DeActivate();
         Time.timeScale = 0f;
         paused = true;
     }
@@ -88,6 +93,7 @@ public class PauseMenuController : IMenuController
     {
         _pauseMenuController.DeActivate();
         _optionsMenuController.DeActivate();
+        if (_baseUIController != null) _baseUIController.Activate();
         Time.timeScale = 1f;
         paused = false;
     }
