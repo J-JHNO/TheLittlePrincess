@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public TextMeshProUGUI lapText;
+    public TextMeshProUGUI text;
 
-    public void UpdateLapText(string message)
+    public void UpdateText(string message)
     {
-        lapText.text = message;
+        text.text = message;
     }
 }

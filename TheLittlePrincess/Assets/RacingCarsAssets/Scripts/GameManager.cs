@@ -1,24 +1,50 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IDataPersistence
 {
     public AIControls[] aiControls;
-    public LapManager lapTracker;
     public TricolorLights tricolorLights;
 
     public AudioSource audioSource;
     public AudioClip lowBeep;
     public AudioClip highBeep;
+    
+    private int restartCount = 0;
+    private String betCar;
+    private bool isBetCorrect = false;
+    public UIManager ui;
+    
+    public PlayerController playerController;
 
-    void Awake()
+
+    private void Start()
     {
-        StartGame();
+        foreach (AIControls aiControl in aiControls)
+        {
+            Debug.Log(aiControl.transform.position);
+        }
     }
-    public void StartGame()
+    private void Update()
     {
-        FreezePlayers(true);
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            betCar = "Red";
+            ui.UpdateText("Your bet is on red");
+            StartGame("red");
+        } else if (Input.GetKeyDown(KeyCode.G))
+        {
+            betCar = "Green";
+            ui.UpdateText("Your bet is on green");
+            StartGame("green");
+        }
+    }
+
+    public void StartGame(string color)
+    {
+        ResetRace();
         StartCoroutine("Countdown");
     }
     IEnumerator Countdown()
@@ -39,21 +65,60 @@ public class GameManager : MonoBehaviour
         Debug.Log("GO");
         audioSource.PlayOneShot(highBeep);
         tricolorLights.SetProgress(4);
-        StartRacing();
         yield return new WaitForSeconds(2f);
         tricolorLights.SetAllLightsOff();
     }
-    public void StartRacing()
+    public void ResetRace()
     {
-        FreezePlayers(false);
-    }
-    void FreezePlayers(bool freeze)
-    {
-        //TODO : freeze players here
-        
-        foreach (AIControls aiC in this.aiControls)
+        int cpt = 0;
+        foreach (AIControls aiControl in aiControls)
         {
-            aiC.enabled = !freeze;
+            float  xPosition;
+            if (restartCount == 0)
+            {
+                xPosition = 37.67f;
+            }
+            else
+            {
+                xPosition = 39f;
+            }
+            
+            if (cpt == 0)
+            {
+                aiControl.transform.position = new Vector3(xPosition, 0.34f, -36.32f);
+                cpt++;
+            }
+            else
+            {
+                aiControl.transform.position = new Vector3(xPosition, 0.34f, -30.22f);
+            }
+            aiControl.transform.rotation = new Quaternion(0, 90, 0, 0);
+            aiControl.ResetFirstWaypoint();
         }
+        restartCount++;
+    }
+    
+    public void CheckBetResult(PlayerRank winner)
+    {
+        if (isBetCorrect = winner.identity.gameObject.tag == betCar)
+        {
+            ui.UpdateText("You won your bet ! You now have access to a new planet.");
+        }
+        else
+        {
+            ui.UpdateText("You lost! Try again.\nR : Bet on red car\nG : Bet on green car");
+        }
+    }
+
+    public void LoadData(GameData data)
+    {
+        playerController.ChangePosition(data.playerPositionPlanet2);
+    }
+
+    public void SavaData(ref GameData data)
+    {
+        Debug.Log("isBetCorrect : " + isBetCorrect);
+        data.planetLocked[2] = !isBetCorrect;
+        data.playerPositionPlanet2 = playerController.GetPosition();
     }
 }

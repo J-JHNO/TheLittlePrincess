@@ -17,6 +17,7 @@ public class AIControls : MonoBehaviour
     public float maxDistanceToReverse = 10f;
 
     public float randomJitterOnPosition = .5f;
+    
 
     void Awake()
     {
@@ -56,6 +57,11 @@ public class AIControls : MonoBehaviour
         onInput?.Invoke(input);
     }
 
+    public void ResetFirstWaypoint()
+    {
+        SelectWaypoint(waypoints[0]);
+    }
+    
     void SelectWaypoint(Transform waypoint)
     {
         nextWaypoint = waypoint;

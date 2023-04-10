@@ -11,14 +11,13 @@ public class CarMovement : MonoBehaviour
     public float backwardMoveSpeed;
     public float steerSpeed;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     private void Update()
     {
+        
+        if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.G))
+        {
+            StartCoroutine("waitForCountDown");
+        }
         
     }
 
@@ -38,5 +37,14 @@ public class CarMovement : MonoBehaviour
     public void SetInputs(Vector2 input)
     {
         this.input = input;
+    }
+    
+    private IEnumerator waitForCountDown()
+    {
+        forwardMoveSpeed = 0;
+        steerSpeed = 0;
+        yield return new WaitForSeconds(4);
+        forwardMoveSpeed = 60;
+        steerSpeed = 180;
     }
 }

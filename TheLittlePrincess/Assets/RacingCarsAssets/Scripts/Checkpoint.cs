@@ -16,7 +16,7 @@ public class Checkpoint : MonoBehaviour
 
         // Or can be done by getting a component that means this is a car, like CarController
         CarIdentity car = collider.gameObject.GetComponent<CarIdentity>();
-        if (car != null && car.identityName.Equals("Car"))
+        if (car != null && (car.identityName.Equals("Red") || car.identityName.Equals("Green")))
         {
             onCheckpointEnter.Invoke(collider.gameObject, this);
         }
