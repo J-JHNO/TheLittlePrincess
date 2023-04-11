@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour, IDataPersistence
     public void SavaData(ref GameData data)
     {
         Debug.Log("isBetCorrect : " + isBetCorrect);
-        data.planetLocked[2] = !isBetCorrect;
+        if (!data.planetLocked[2]) data.planetLocked[2] = !isBetCorrect;
         data.playerPositionPlanet2 = playerController.GetPosition();
     }
 }

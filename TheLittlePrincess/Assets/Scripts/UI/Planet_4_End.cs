@@ -19,6 +19,15 @@ public class Planet_4_End : IMenuController
         _EndMenuController.DeActivate();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            _EndMenuController.DeActivate();
+        }
+    }
+
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Player") {
