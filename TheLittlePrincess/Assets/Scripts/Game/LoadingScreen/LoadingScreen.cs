@@ -33,7 +33,7 @@ public class LoadingScreen : MonoBehaviour
     private string ChooseRandomText()
     {
         List<string> texts = new List<string>();
-        texts.Add("Did you know? The little princess in a hip-hop star in her planet");
+        texts.Add("Did you know? The little princess is a hip-hop star in her planet");
         texts.Add("Hold F to dance !");
         texts.Add("You can save the game at any time by pressing escape");
         texts.Add("Some humans can help you in Fouras's castle");

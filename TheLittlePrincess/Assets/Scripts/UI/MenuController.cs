@@ -101,7 +101,7 @@ public class MenuController : IMenuController
     {
         Debug.Log("Quit");
 
-        DataPersistenceManager.instance.SaveGame();
+        Save();
 
         yield return new WaitForSeconds(_waitBetweenActions);
 
@@ -113,6 +113,8 @@ public class MenuController : IMenuController
 
     public IEnumerator StartPlanet(int planetIndex)
     {
+        Save(); // Save before changing scene
+
         if (!_loadingPlanet)
         {
             _loadingPlanet = true;
@@ -127,5 +129,10 @@ public class MenuController : IMenuController
         yield return new WaitForSeconds(_waitBetweenActions);
         _planetLoader.UnlockAllPlanets();
         yield return new WaitForSeconds(_waitBetweenActions);
+    }
+
+    public void Save()
+    {
+        DataPersistenceManager.instance.SaveGame();
     }
 }
