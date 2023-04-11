@@ -11,7 +11,6 @@ public class CarMovement : MonoBehaviour
     public float backwardMoveSpeed;
     public float steerSpeed;
 
-<<<<<<< Updated upstream
     private void Update()
     {
         
@@ -19,17 +18,6 @@ public class CarMovement : MonoBehaviour
         {
             StartCoroutine("waitForCountDown");
         }
-=======
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    private void Update()
-    {
->>>>>>> Stashed changes
-        
     }
 
     // Apply physics here
@@ -49,8 +37,7 @@ public class CarMovement : MonoBehaviour
     {
         this.input = input;
     }
-<<<<<<< Updated upstream
-    
+
     private IEnumerator waitForCountDown()
     {
         forwardMoveSpeed = 0;
@@ -59,6 +46,4 @@ public class CarMovement : MonoBehaviour
         forwardMoveSpeed = 60;
         steerSpeed = 180;
     }
-=======
->>>>>>> Stashed changes
 }

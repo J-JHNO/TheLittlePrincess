@@ -1,27 +1,16 @@
-<<<<<<< Updated upstream
 using System;
-=======
->>>>>>> Stashed changes
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< Updated upstream
 public class GameManager : MonoBehaviour, IDataPersistence
 {
     public AIControls[] aiControls;
-=======
-public class GameManager : MonoBehaviour
-{
-    public AIControls[] aiControls;
-    public LapManager lapTracker;
->>>>>>> Stashed changes
     public TricolorLights tricolorLights;
 
     public AudioSource audioSource;
     public AudioClip lowBeep;
     public AudioClip highBeep;
-<<<<<<< Updated upstream
     
     private int restartCount = 0;
     private String betCar;
@@ -56,16 +45,6 @@ public class GameManager : MonoBehaviour
     public void StartGame(string color)
     {
         ResetRace();
-=======
-
-    void Awake()
-    {
-        StartGame();
-    }
-    public void StartGame()
-    {
-        FreezePlayers(true);
->>>>>>> Stashed changes
         StartCoroutine("Countdown");
     }
     IEnumerator Countdown()
@@ -86,7 +65,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("GO");
         audioSource.PlayOneShot(highBeep);
         tricolorLights.SetProgress(4);
-<<<<<<< Updated upstream
         yield return new WaitForSeconds(2f);
         tricolorLights.SetAllLightsOff();
     }
@@ -142,23 +120,5 @@ public class GameManager : MonoBehaviour
         Debug.Log("isBetCorrect : " + isBetCorrect);
         data.planetLocked[2] = !isBetCorrect;
         data.playerPositionPlanet2 = playerController.GetPosition();
-=======
-        StartRacing();
-        yield return new WaitForSeconds(2f);
-        tricolorLights.SetAllLightsOff();
-    }
-    public void StartRacing()
-    {
-        FreezePlayers(false);
-    }
-    void FreezePlayers(bool freeze)
-    {
-        //TODO : freeze players here
-        
-        foreach (AIControls aiC in this.aiControls)
-        {
-            aiC.enabled = !freeze;
-        }
->>>>>>> Stashed changes
     }
 }
