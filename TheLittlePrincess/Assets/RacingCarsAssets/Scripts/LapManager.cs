@@ -1,7 +1,4 @@
-<<<<<<< Updated upstream
 using System;
-=======
->>>>>>> Stashed changes
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class LapManager : MonoBehaviour
 {
-<<<<<<< Updated upstream
     public GameManager gameManager;
     public List<Checkpoint> checkpoints;
     public int totalLaps = 1;
@@ -19,21 +15,11 @@ public class LapManager : MonoBehaviour
     private PlayerRank greenPlayerRank;
     private PlayerRank winner;
     public UnityEvent onPlayerFinished = new UnityEvent();
-=======
-    public List<Checkpoint> checkpoints;
-    public int totalLaps = 3;
-
-    private List<PlayerRank> playerRanks = new List<PlayerRank>();
-    private PlayerRank mainPlayerRank;
-    public UnityEvent onPlayerFinished = new UnityEvent();
-
->>>>>>> Stashed changes
     void Start()
     {
         // Get players in the scene
         foreach(CarIdentity carIdentity in GameObject.FindObjectsOfType<CarIdentity>())
         {
-<<<<<<< Updated upstream
             Debug.Log("Found car " + carIdentity.gameObject.tag);
             playerRanks.Add(new PlayerRank(carIdentity));
         }
@@ -58,13 +44,6 @@ public class LapManager : MonoBehaviour
         greenPlayerRank.lastCheckpoint = -1;
         redPlayerRank.hasFinished = false;
         greenPlayerRank.hasFinished = false;
-        
-=======
-            playerRanks.Add(new PlayerRank(carIdentity));
-        }
-        ListenCheckpoints(true);
-        mainPlayerRank = playerRanks.Find(player => player.identity.gameObject.tag == "Player");
->>>>>>> Stashed changes
     }
 
     private void ListenCheckpoints(bool subscribe)
@@ -102,7 +81,6 @@ public class LapManager : MonoBehaviour
                     player.rank = playerRanks.FindAll(player => player.hasFinished).Count;
 
                     // if first winner, display its name
-<<<<<<< Updated upstream
                     if (player == redPlayerRank && !greenPlayerRank.hasFinished) // display player rank if not winner
                     {
                         Debug.Log("Red player finished first");
@@ -123,29 +101,6 @@ public class LapManager : MonoBehaviour
                         //SceneManager.LoadScene(0);
                     }
                 }
-=======
-                    if (player.rank == 1)
-                    {
-
-                        // TODO : create attribute divername in CarIdentity 
-                        //Debug.Log(player.identity.driverName + " won");
-                    }
-                    else if (player == mainPlayerRank) // display player rank if not winner
-                    {
-                    }
-
-                    if (player == mainPlayerRank)
-                    {
-                        onPlayerFinished.Invoke();
-                        //sceneLoader.LoadMenu(); 
-                        SceneManager.LoadScene(0);
-                    }
-                }
-                else {
-                    // TODO : create attribute divername in CarIdentity 
-                    //Debug.Log(player.identity.driverName + ": lap " + player.lapNumber);
-                }
->>>>>>> Stashed changes
             }
             // next checkpoint reached
             else if (checkpointNumber == player.lastCheckpoint + 1)
@@ -154,9 +109,4 @@ public class LapManager : MonoBehaviour
             }
         }
     }
-<<<<<<< Updated upstream
-    
-    
-=======
->>>>>>> Stashed changes
 }

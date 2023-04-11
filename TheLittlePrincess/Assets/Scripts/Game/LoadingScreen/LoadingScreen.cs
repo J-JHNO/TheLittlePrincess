@@ -33,12 +33,12 @@ public class LoadingScreen : MonoBehaviour
     private string ChooseRandomText()
     {
         List<string> texts = new List<string>();
-        texts.Add("Le saviez vous? La petite princesse est une star du hip-hop sur sa planète");
-        texts.Add("En maintenant la touche F vous pouvez dancer !");
-        texts.Add("Vous pouvez sauvegarder le jeu à tout moment en appuyant sur échap");
-        texts.Add("Des humains peuvent vous aider dans le château du père Fouras");
-        texts.Add("Le saviez vous? La petite princesse vient de la planète SI4-FISA");
-        texts.Add("Appuyez sur le bouton Unlock All pour débloquer toutes les planètes !");
+        texts.Add("Did you know? The little princess in a hip-hop star in her planet");
+        texts.Add("Hold F to dance !");
+        texts.Add("You can save the game at any time by pressing escape");
+        texts.Add("Some humans can help you in Fouras's castle");
+        texts.Add("Did you know? The little princess comes from the planet SI4-FISA");
+        texts.Add("You can unlock all the planets with the UnlockAll button");
 
         int newIndex = Random.Range(0, texts.Count);
         while (_lastTextIndex == newIndex) {
