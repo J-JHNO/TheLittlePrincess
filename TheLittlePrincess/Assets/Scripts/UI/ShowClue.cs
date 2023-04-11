@@ -13,6 +13,7 @@ public class ShowClue : IMenuController
 
     private bool showClue = false;
     private bool clueShown = false;
+    private bool paused = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,24 @@ public class ShowClue : IMenuController
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F) && showClue && !clueShown) {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            paused = !paused;
+            if (paused)
+            {
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                Time.timeScale = 1f;
+            }
+
+            _showClueUIController.DeActivate();
+            _baseUIController.Activate();
+            clueShown = false;
+
+        }
+        else if (Input.GetKeyDown(KeyCode.F) && showClue && !clueShown) {
             Time.timeScale = 0f;
             _baseUIController.DeActivate();
             clueUI.text = clue;
