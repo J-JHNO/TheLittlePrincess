@@ -8,6 +8,8 @@ public class RecupererIndices : MonoBehaviour
 
     public TextMeshProUGUI display;
 
+    public GameObject tower;
+
     int n = 0;
 
     int nbIndices = 5;
@@ -17,6 +19,10 @@ public class RecupererIndices : MonoBehaviour
     bool found3 = false;
     bool found4 = false;
     bool found5 = false;
+
+    bool finished = false;
+
+    bool inside = false;
 
     IEnumerator Ending()
     {
@@ -30,10 +36,12 @@ public class RecupererIndices : MonoBehaviour
     void OnTriggerEnter(Collider go)
 
     {
+        
 
-       if(n == nbIndices)
+       if(n == nbIndices && !finished)
        {
             StartCoroutine(Ending());
+            this.finished = true;
        }
 
        if (go.CompareTag("Elf_1"))
@@ -84,6 +92,16 @@ public class RecupererIndices : MonoBehaviour
                 found5 = true;
             }
             display.text = "Indice 5 :  L'alphabet français comporte 26 lettres. : " + n + " / 5 ";
+        }
+        if(!go.CompareTag("Elf_1") && !go.CompareTag("Elf_2") && !go.CompareTag("Guerrier_1") && !go.CompareTag("Guerrier_2") && !go.CompareTag("Guerrier_3"))
+        {
+            display.text = "";
+        }
+        if (go.CompareTag("Tower_entry"))
+        {
+           
+            tower.SetActive(!inside);
+            inside = !inside;
         }
       
     }

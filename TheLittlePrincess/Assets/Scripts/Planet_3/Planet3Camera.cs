@@ -1,10 +1,10 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace IndiePixel.Cameras
 {
-    public class TopDownCamera : MonoBehaviour
+    public class Planet3Camera : MonoBehaviour
     {
 
         #region Variables
@@ -52,6 +52,15 @@ namespace IndiePixel.Cameras
             {
                 return;
             }
+
+            float newHeight = Mathf.Clamp(m_Target.position.y + 2f, 2f, 5f);
+
+            if (m_Target.position.y > oldHeight)
+            {
+                m_Height = 3 + Mathf.Round(m_Target.position.y);
+                oldHeight = m_Height;
+            }
+
 
             // Build World position vector
             Vector3 worldPosition = (Vector3.forward * -m_Distance) + (Vector3.up * m_Height);
