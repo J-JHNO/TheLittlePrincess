@@ -65,7 +65,7 @@ namespace IndiePixel.Cameras
 
             // Build World position vector
             Vector3 heightVector3 = Vector3.up * m_Height;
-            heightVector3.y += m_Target.position.y;
+            //heightVector3.y += m_Target.position.y;
             Vector3 worldPosition = (Vector3.forward * -m_Distance) + (heightVector3);
             Debug.DrawLine(m_Target.position, worldPosition, Color.red);
 
