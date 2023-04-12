@@ -53,17 +53,20 @@ namespace IndiePixel.Cameras
                 return;
             }
 
+            /*
             float newHeight = Mathf.Clamp(m_Target.position.y + 2f, 2f, 5f);
 
             if (m_Target.position.y > oldHeight)
             {
-                m_Height = 3 + Mathf.Round(m_Target.position.y);
+                m_Height = 1 + Mathf.Round(m_Target.position.y);
                 oldHeight = m_Height;
-            }
+            }*/
 
 
             // Build World position vector
-            Vector3 worldPosition = (Vector3.forward * -m_Distance) + (Vector3.up * m_Height);
+            Vector3 heightVector3 = Vector3.up * m_Height;
+            heightVector3.y += m_Target.position.y;
+            Vector3 worldPosition = (Vector3.forward * -m_Distance) + (heightVector3);
             Debug.DrawLine(m_Target.position, worldPosition, Color.red);
 
             // Build our Rotated Vector

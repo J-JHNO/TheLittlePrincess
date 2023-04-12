@@ -113,7 +113,7 @@ public class MenuController : IMenuController
 
     public IEnumerator StartPlanet(int planetIndex)
     {
-        Save(); // Save before changing scene
+        //Save(); // Save before changing scene
 
         if (!_loadingPlanet)
         {

@@ -16,7 +16,7 @@ public class PlanetLoader : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        Init();
+        
     }
 
     public void Init()
@@ -117,6 +117,8 @@ public class PlanetLoader : MonoBehaviour, IDataPersistence
     public void LoadData(GameData data)
     {
         this.planetLocked = data.planetLocked;
+
+        Init();
     }
 
     public void SavaData(ref GameData data)

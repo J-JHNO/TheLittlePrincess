@@ -10,6 +10,8 @@ public class RecupererIndices : MonoBehaviour
 
     public GameObject tower;
 
+    public PlayerController playerController;
+
     int n = 0;
 
     int nbIndices = 5;
@@ -99,9 +101,12 @@ public class RecupererIndices : MonoBehaviour
         }
         if (go.CompareTag("Tower_entry"))
         {
-           
+            //this.gameObject.transform.position = new Vector3(0, 23, 9);
             tower.SetActive(!inside);
             inside = !inside;
+
+            playerController.ChangePosition(new Vector3(0, 17, 9));
+            Debug.Log("POS = " + playerController.GetPosition());
         }
       
     }

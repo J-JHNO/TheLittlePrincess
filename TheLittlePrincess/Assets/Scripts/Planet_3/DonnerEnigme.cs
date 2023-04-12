@@ -14,6 +14,11 @@ public class DonnerEnigme : MonoBehaviour
 
     bool solved = false;
 
+    public bool IsSolved()
+    {
+        return solved;
+    }
+
     void Start()
     {
         
