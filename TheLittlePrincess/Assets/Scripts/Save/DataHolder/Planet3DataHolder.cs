@@ -15,6 +15,6 @@ public class Planet3DataHolder : MonoBehaviour, IDataPersistence
     public void SavaData(ref GameData data)
     {
         data.playerPositionPlanet3 = playerController.GetPosition();
-        if (data.planetLocked[3]) data.planetLocked[3] = donnerEnigme.IsSolved();
+        if (data.planetLocked[3]) data.planetLocked[3] = !donnerEnigme.IsSolved();
     }
 }
