@@ -38,15 +38,16 @@ public class RecupererIndices : MonoBehaviour
         yield return new WaitForSeconds(3);
     }
 
+    void Start()
+    {
+        display.text = "Bienvenue dans la planète du Père Fouras ! \n\n Les règles pour en sortir sont simples, il vous faudra gravir les marches de la tour et résoudre les 3 énigmes. \n\n Dans l'enceinte du chateau sont situés des habitants qui vous délivreront des indices pour vous aider dans votre quête, allez d'abord les rencontrer.";
+        start = true;
+    }
+
     void OnTriggerEnter(Collider go)
 
     {
         
-       if(start == false)
-        {
-            start = true;
-        }
-
        if(n == nbIndices && !finished)
        {
             StartCoroutine(Ending());
