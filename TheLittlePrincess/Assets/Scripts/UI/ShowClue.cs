@@ -7,8 +7,8 @@ public class ShowClue : IMenuController
 {
 
     public string clue;
-    public MenuButtonController _baseUIController;
-    public MenuButtonController _showClueUIController;
+    public MenuButtonController _baseUIController, _showClueUIController, _clueUIController;
+    public AudioSource enterClue, exitClue;
     public TMPro.TMP_Text clueUI;
 
     private bool showClue = false;
@@ -20,19 +20,26 @@ public class ShowClue : IMenuController
     {
         Time.timeScale = 1f;
         _showClueUIController.DeActivate();
+        _clueUIController.DeActivate();
     }
 
     void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Player")
         {
+            _clueUIController.Activate();
             showClue = true;
         }
-        else showClue = false;
+        else 
+        {
+            _clueUIController.DeActivate();
+            showClue = false;
+        } 
     }
 
     void OnTriggerExit(Collider collider) 
     {
+        _clueUIController.DeActivate();
         showClue = false;
     }
 
@@ -53,20 +60,26 @@ public class ShowClue : IMenuController
 
             _showClueUIController.DeActivate();
             _baseUIController.Activate();
+            exitClue.Play();
             clueShown = false;
 
         }
         else if (Input.GetKeyDown(KeyCode.F) && showClue && !clueShown) {
             Time.timeScale = 0f;
             _baseUIController.DeActivate();
+            _clueUIController.DeActivate();
             clueUI.text = clue;
             _showClueUIController.Activate();
+            enterClue.Play();
             clueShown = true;
         } else if (Input.GetKeyDown(KeyCode.F) && showClue && clueShown)
         {
             Time.timeScale = 1f;
             _baseUIController.Activate();
             _showClueUIController.DeActivate();
+            _clueUIController.Activate();
+            AudioListener.pause = false;
+            exitClue.Play();
             clueShown = false;
         }
     }

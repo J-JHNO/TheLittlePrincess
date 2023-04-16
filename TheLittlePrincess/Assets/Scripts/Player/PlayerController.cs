@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private CharacterController characterController;
     private Vector3 direction;
     private Transition transition;
+    public AudioSource walking, running;
 
     public float speed = 5f;
     public float turnSmoothTime = 0.1f;
@@ -73,6 +74,7 @@ public class PlayerController : MonoBehaviour
 
         bool playAnim = input.x != 0 || input.y != 0;
         transition.Walk(playAnim);
+        if (walking != null && !running.enabled) walking.enabled = playAnim;
     }
 
     public void Run(InputAction.CallbackContext context)
@@ -80,6 +82,7 @@ public class PlayerController : MonoBehaviour
         if (context.canceled)
         {
             transition.Run(false);
+            if (running != null) running.enabled = false;
             speed /= 2;
             return;
         }
@@ -87,6 +90,10 @@ public class PlayerController : MonoBehaviour
 
         speed *= 2;
         transition.Run(true);
+        if (running != null) {
+            walking.enabled = false;
+            running.enabled = true;
+        }
     }
 
     public void Jump(InputAction.CallbackContext context)
