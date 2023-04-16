@@ -24,7 +24,9 @@ public class RecupererIndices : MonoBehaviour
 
     bool finished = false;
 
-    bool inside = false;
+    bool inside = true;
+
+    bool start = false;
 
     IEnumerator Ending()
     {
@@ -33,12 +35,17 @@ public class RecupererIndices : MonoBehaviour
 
         display.text = "Félicitations vous avez trouvé tous les indices ! \n\n Dirigez vous vers la tour centrale pour rencontrer le Père Fouras et résoudre les énigmes ";
         display.color = Color.red;
+        yield return new WaitForSeconds(3);
     }
 
     void OnTriggerEnter(Collider go)
 
     {
         
+       if(start == false)
+        {
+            start = true;
+        }
 
        if(n == nbIndices && !finished)
        {
@@ -95,18 +102,14 @@ public class RecupererIndices : MonoBehaviour
             }
             display.text = "Indice 5 :  L'alphabet français comporte 26 lettres. : " + n + " / 5 ";
         }
-        if(!go.CompareTag("Elf_1") && !go.CompareTag("Elf_2") && !go.CompareTag("Guerrier_1") && !go.CompareTag("Guerrier_2") && !go.CompareTag("Guerrier_3"))
+        if(!go.CompareTag("Elf_1") && !go.CompareTag("Elf_2") && !go.CompareTag("Guerrier_1") && !go.CompareTag("Guerrier_2") && !go.CompareTag("Guerrier_3") && !start)
         {
             display.text = "";
         }
         if (go.CompareTag("Tower_entry"))
         {
-            //this.gameObject.transform.position = new Vector3(0, 23, 9);
             tower.SetActive(!inside);
             inside = !inside;
-
-            playerController.ChangePosition(new Vector3(0, 17, 9));
-            Debug.Log("POS = " + playerController.GetPosition());
         }
       
     }

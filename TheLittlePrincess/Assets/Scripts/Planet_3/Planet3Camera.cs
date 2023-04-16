@@ -53,14 +53,14 @@ namespace IndiePixel.Cameras
                 return;
             }
 
-            /*
+            
             float newHeight = Mathf.Clamp(m_Target.position.y + 2f, 2f, 5f);
 
             if (m_Target.position.y > oldHeight)
             {
                 m_Height = 1 + Mathf.Round(m_Target.position.y);
                 oldHeight = m_Height;
-            }*/
+            }
 
 
             // Build World position vector
