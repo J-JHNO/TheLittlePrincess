@@ -19,6 +19,7 @@ Polytech Nice Sophia
 - [Medieval castle](https://assetstore.unity.com/packages/3d/environments/medieval-castle-227378)
 - [Tropical island](https://assetstore.unity.com/packages/3d/environments/nature-environment-tropical-island-lite-low-poly-3d-by-justcreat-242437)
 - [Statues](https://assetstore.unity.com/packages/3d/environments/fantasy/make-your-fantasy-game-lite-8312)
+- [Medieval music](https://www.musicscreen.be/musique-libre-de-droit/Catalogue/mixguerchoeurs.html)
 
 ### Planet 4 : The Dark Reality
 - [Clipboard](https://assetstore.unity.com/packages/3d/props/clipboard-137662)
