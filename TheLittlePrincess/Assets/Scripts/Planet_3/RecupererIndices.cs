@@ -5,12 +5,14 @@ using TMPro;
 
 public class RecupererIndices : MonoBehaviour
 {
+    
 
     public TextMeshProUGUI display;
 
     public GameObject tower;
 
     public PlayerController playerController;
+
 
     int n = 0;
 
@@ -42,6 +44,9 @@ public class RecupererIndices : MonoBehaviour
     {
         display.text = "Bienvenue dans la planète du Père Fouras ! \n\n Les règles pour en sortir sont simples, il vous faudra gravir les marches de la tour et résoudre les 3 énigmes. \n\n Dans l'enceinte du chateau sont situés des habitants qui vous délivreront des indices pour vous aider dans votre quête, allez d'abord les rencontrer.";
         start = true;
+        AudioSource musicSource = GetComponent<AudioSource>(); 
+        
+        if(musicSource != null) musicSource.Play(); 
     }
 
     void OnTriggerEnter(Collider go)
