@@ -7,6 +7,13 @@ Polytech Nice Sophia
 - [Poly Planets](https://assetstore.unity.com/packages/3d/poly-planets-34894)
 - [Quick Outline](https://assetstore.unity.com/packages/tools/particles-effects/quick-outline-115488)
 
+### Planet 1 : Museum
+- [Classic picture frame](https://assetstore.unity.com/packages/3d/props/furniture/classic-picture-frame-59038)
+- [Wood Pattern Material](https://assetstore.unity.com/packages/2d/textures-materials/wood/wood-pattern-material-170794)
+
+### Planet 2 : Racing Track
+- [Racing Kit (Stands only)](https://www.kenney.nl/assets/racing-kit)
+
 ### Planet 3 : Fouras' Tower
 - [Lowpoly Medieval Priest](https://assetstore.unity.com/packages/3d/characters/humanoids/lowpoly-medieval-priest-st-patrick-free-pack-164796)
 - [The village well](https://assetstore.unity.com/packages/3d/props/exterior/the-village-well-115166)

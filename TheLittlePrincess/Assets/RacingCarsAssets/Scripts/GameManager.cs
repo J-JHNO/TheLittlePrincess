@@ -32,12 +32,12 @@ public class GameManager : MonoBehaviour, IDataPersistence
         if (Input.GetKeyDown(KeyCode.R))
         {
             betCar = "Red";
-            ui.UpdateText("Your bet is on red");
+            ui.UpdateText("Your bet is on red \n V: change camera view");
             StartGame("red");
         } else if (Input.GetKeyDown(KeyCode.G))
         {
             betCar = "Green";
-            ui.UpdateText("Your bet is on green");
+            ui.UpdateText("Your bet is on green \n V : change camera view");
             StartGame("green");
         }
     }

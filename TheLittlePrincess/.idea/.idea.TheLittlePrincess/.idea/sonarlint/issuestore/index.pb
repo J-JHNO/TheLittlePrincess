@@ -15,5 +15,11 @@ Y
 )Assets/Scripts/Player/PlayerController.cs,c\1\c1b2abcd3d72732cf3bf687bc9080c1357596be9
 T
 $Assets/Scripts/Save/Data/GameData.cs,6\0\60c1d848c882076f641a092546903f07c188721f
+W
+'Assets/Scripts/Camera/Planet3_camera.cs,5\b\5b4b0e9d1f3b2b9bedaacb4f9256e473f1335896
+V
+&Assets/Scripts/Camera/TopDownCamera.cs,f\9\f916a4953e0275bd51168e04ebafb33c84f9b6fe
+V
+&Assets/Scripts/Camera/Planet2Camera.cs,1\6\16946d9f776c0059195f17ceef172b567df80300
 ^
 .Assets/RacingCarsAssets/Scripts/GameManager.cs,d\9\d9cfb1e4f09c38b2a950b9a4f312b20c12bd6bb1
